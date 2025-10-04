@@ -1,0 +1,220 @@
+.dancing-tiger-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.title-section {
+  text-align: center;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.page-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  animation: titleFloat 3s ease-in-out infinite;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+@keyframes titleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.tiger-wrapper {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tiger-image {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* Dancing Animation */
+.tiger-wrapper.dancing .tiger-image {
+  animation:
+    tigerDance 2s ease-in-out infinite,
+    tigerRotate 4s ease-in-out infinite,
+    tigerScale 1.5s ease-in-out infinite;
+}
+
+@keyframes tigerDance {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-30px) translateX(-15px);
+  }
+  50% {
+    transform: translateY(-10px) translateX(0);
+  }
+  75% {
+    transform: translateY(-30px) translateX(15px);
+  }
+}
+
+@keyframes tigerRotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes tigerScale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Control Button */
+.control-button {
+  padding: 1rem 2.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.control-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ff5252 0%, #e63946 100%);
+}
+
+.control-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Info Text */
+.info-text {
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.info-text p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+  }
+
+  .tiger-wrapper {
+    width: 250px;
+    height: 290px;
+  }
+
+  .control-button {
+    padding: 0.8rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .info-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .tiger-wrapper {
+    width: 200px;
+    height: 230px;
+  }
+
+  .control-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .info-text {
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  @keyframes tigerDance {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-20px) translateX(-10px);
+    }
+    50% {
+      transform: translateY(-5px) translateX(0);
+    }
+    75% {
+      transform: translateY(-20px) translateX(10px);
+    }
+  }
+}
+
+/* Accessibility - Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .tiger-wrapper.dancing .tiger-image {
+    animation: none;
+  }
+
+  .page-title {
+    animation: none;
+  }
+
+  .control-button:hover {
+    transform: none;
+  }
+}
